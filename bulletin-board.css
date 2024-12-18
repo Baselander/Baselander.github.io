@@ -1,0 +1,181 @@
+body {
+    background-color:lightgray;
+}
+
+h1 {
+    font-size: 80px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    justify-content: center;
+    color:dodgerblue;
+}
+
+h5 {
+    display: flex;
+    justify-content: center;
+    color:dodgerblue;
+    font-size: 20px;
+}
+
+.T:active .hint{
+    display:block
+}
+
+.hint {
+    font-family:'Times New Roman', Times, serif;
+    display: none;
+    color:dodgerblue;
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 70px;
+    display: flex;
+    justify-content: center;
+    color:dodgerblue;
+}
+
+h3 {
+    font-size: 55px;
+    display: flex;
+    justify-content: center;
+    color:dodgerblue;
+}
+
+.items {
+    font-size: 55px;
+    display: flex;
+    justify-content: center;
+}
+
+.foot {
+    display: flex;
+    background-color: lightblue;
+    align-content: center;
+    justify-content: center;
+    font-family: italic;
+}
+
+.notice {
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    color:red;
+}
+
+.home {
+    font-size: 50px;
+}
+
+.home:hover {
+    font-size: 60px;
+}
+
+.DH {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-around;
+    margin: 15px;
+    padding: 15px;
+}
+
+.DHW {
+    color:red;
+}
+
+.DHI {
+    width: 710.1px;
+    height: 1010.25px;
+    border: 7px;
+    border-color:black;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 7px;
+}
+
+.rules {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 710.1px;
+    height: 1010.25px;
+    border: 7px;
+    border-color:black;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 7px;
+}
+
+.q1review {
+    display: flex;
+    flex-direction: column;
+    border: 3px;
+    border-color:red;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 3px;
+}
+
+.reviews1 {
+    font-size: 55px;
+    display: flex;
+    justify-content: center;
+    color:red;
+}
+
+.packs1 {
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    color:red;
+}
+
+.packs1:hover {
+    font-size: 60px;
+}
+.q2review {
+    display: flex;
+    flex-direction: column;
+    border: 3px;
+    border-color:blueviolet;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 3px;
+}
+
+.reviews2 {
+    font-size: 55px;
+    display: flex;
+    justify-content: center;
+    color:blueviolet;
+}
+
+.packs2 {
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    color:blueviolet;
+}
+
+.packs2:hover {
+    font-size: 60px;
+}
+
+.file-link {
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.file-link:hover {
+    font-size: 60px;
+}
+
+.description {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    font-family: italic;
+    color:deepskyblue;
+}
