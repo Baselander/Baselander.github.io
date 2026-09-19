@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFLS 每日作业与通知</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 引入字体 (可选) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 标题 -->
+    <header class="site-header">
+        <div class="logo">
+            <span class="logo-icon">S</span>
+            <h1>SFLS Hub</h1>
+        </div>
+        <!-- 选项 -->
+        <nav class="main-nav">
+            <button class="nav-btn active" data-target="home">首页</button>
+            <button class="nav-btn" data-target="homework">作业</button>
+            <button class="nav-btn" data-target="notices">通知</button>
+            <button class="nav-btn" data-target="gap">GAP</button>
+            <button class="nav-btn" data-target="other">其他</button>
+        </nav>
+    </header>
+
+    <!-- 页面内容 -->
+    <main id="app-content">
+        
+        <!-- 首页 -->
+        <section id="home" class="page-section active">
+            <div class="hero-section">
+                <h2>欢迎来到 SFLS 学习中心</h2>
+                <p>查看每日作业，掌握最新通知，规划你的校园生活。</p>
+                <button class="cta-btn" onclick="document.querySelector('[data-target=\'homework\']').click()">查看今日作业</button>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>📚 作业布置</h3>
+                    <p>按班级分类查看各科作业与要求，方便快捷。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📢 校园通知</h3>
+                    <p>及时获取学校重要活动、考试安排与提醒。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📖 GAP专区</h3>
+                    <p>项目式学习与课外拓展活动信息汇总。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 作业页 -->
+        <section id="homework" class="page-section">
+            <!-- 子选项栏目 -->
+            <div class="sub-nav">
+                <button class="sub-nav-btn active" data-class="111A">111A</button>
+                <button class="sub-nav-btn" data-class="111B">111B</button>
+                <button class="sub-nav-btn" data-class="112">112</button>
+                <button class="sub-nav-btn" data-class="113">113</button>
+                <button class="sub-nav-btn" data-class="114">114</button>
+            </div>
+            <!-- 报纸风格的作业内容渲染区 -->
+            <div id="homework-content" class="newspaper-layout">
+                <!-- 由 JavaScript 动态渲染 -->
+            </div>
+        </section>
+
+        <!-- 通知页 -->
+        <section id="notices" class="page-section">
+            <h2 class="page-title">最新通知</h2>
+            <div class="timeline" id="notices-list">
+                <!-- 由 JavaScript 动态渲染 -->
+            </div>
+        </section>
+
+        <!-- GAP页 -->
+        <section id="gap" class="page-section">
+            <div class="placeholder-box">
+                <h2>🚧 正在制作...</h2>
+                <p>GAP页面尚未完成，敬请期待！</p>
+            </div>
+        </section>
+
+        <!-- 其他页 -->
+        <section id="other" class="page-section">
+            <div class="placeholder-box">
+                <h2>🚧 正在制作...</h2>
+                <p>其他功能正在开发中，敬请期待！</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 底部栏目 -->
+    <footer class="site-footer">
+        <p>&copy; 2025 SFLS 国际部. 每日头疼报社 出品.</p>
+        <p>如果你对本报有任何建议，可以在微信群告诉我们。</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
