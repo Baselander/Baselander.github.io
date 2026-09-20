@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFLS Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 标题与选项 (Header & Nav) -->
+    <header class="site-header">
+        <div class="header-left">
+            <!-- 语言切换 -->
+            <div class="lang-switch">
+                <button id="btn-en" class="active">EN</button> | 
+                <button id="btn-zh">中文</button>
+            </div>
+            <div class="logo">
+                <span class="logo-icon">S</span>
+                <h1>SFLS Hub</h1>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <button class="nav-btn active" data-target="home" data-i18n="nav_home">首页</button>
+            <button class="nav-btn" data-target="homework" data-i18n="nav_homework">作业</button>
+            <button class="nav-btn" data-target="notices" data-i18n="nav_notices">通知</button>
+            <button class="nav-btn" data-target="clubs" data-i18n="nav_clubs">社团</button>
+            <button class="nav-btn" data-target="forum" data-i18n="nav_forum">论坛</button>
+            <button class="nav-btn" data-target="profile" data-i18n="nav_profile">个人</button>
+            <button class="nav-btn" data-target="gap" data-i18n="nav_gap">GAP</button>
+            <button class="nav-btn" data-target="other" data-i18n="nav_other">其他</button>
+        </nav>
+    </header>
+
+    <!-- 页面内容 (Main) -->
+    <main id="app-content">
+        
+        <!-- 首页 -->
+        <section id="home" class="page-section active">
+            <div class="hero-section">
+                <h2 data-i18n="home_welcome">欢迎来到 SFLS 学习中心</h2>
+                <p data-i18n="home_desc">查看每日作业，掌握最新通知，规划你的校园生活。</p>
+                <button class="cta-btn" onclick="document.querySelector('[data-target=\'homework\']').click()" data-i18n="home_cta">查看今日作业</button>
+            </div>
+            <div class="features-grid">
+                <!-- 方块改为按钮，样式保持不变 -->
+                <button class="feature-card" onclick="document.querySelector('[data-target=\'homework\']').click()">
+                    <h3 data-i18n="feat_hw_title">📚 作业布置</h3>
+                    <p data-i18n="feat_hw_desc">按班级分类查看各科作业与要求，方便快捷。</p>
+                </button>
+                <button class="feature-card" onclick="document.querySelector('[data-target=\'notices\']').click()">
+                    <h3 data-i18n="feat_notice_title">📢 校园通知</h3>
+                    <p data-i18n="feat_notice_desc">及时获取学校重要活动、考试安排与提醒。</p>
+                </button>
+                <button class="feature-card" onclick="document.querySelector('[data-target=\'gap\']').click()">
+                    <h3 data-i18n="feat_gap_title">📖 GAP专区</h3>
+                    <p data-i18n="feat_gap_desc">项目式学习与课外拓展活动信息汇总。</p>
+                </button>
+            </div>
+        </section>
+
+        <!-- 作业页 (保留原有逻辑) -->
+        <section id="homework" class="page-section">
+            <div class="sub-nav">
+                <button class="sub-nav-btn active" data-class="111A">111A</button>
+                <button class="sub-nav-btn" data-class="111B">111B</button>
+                <button class="sub-nav-btn" data-class="112">112</button>
+                <button class="sub-nav-btn" data-class="113">113</button>
+                <button class="sub-nav-btn" data-class="114">114</button>
+            </div>
+            <div id="homework-content" class="newspaper-layout"></div>
+        </section>
+
+        <!-- 通知页 (保留原有逻辑) -->
+        <section id="notices" class="page-section">
+            <h2 class="page-title" data-i18n="notices_title">最新通知</h2>
+            <div class="timeline" id="notices-list"></div>
+        </section>
+
+        <!-- 社团页 -->
+        <section id="clubs" class="page-section">
+            <div id="club-list-view">
+                <h2 class="page-title" data-i18n="clubs_title">社团列表</h2>
+                <div class="search-bar">
+                    <input type="text" id="club-search" placeholder="搜索社团..." data-i18n-placeholder="clubs_search_ph">
+                </div>
+                <div class="club-grid" id="club-grid">
+                    <!-- 由 JS 动态渲染 -->
+                </div>
+            </div>
+            <div id="club-detail-view" style="display: none;">
+                <button class="back-btn" onclick="showClubList()">← <span data-i18n="back">返回</span></button>
+                <div class="club-detail-content">
+                    <h2 id="detail-club-name"></h2>
+                    <!-- 海报图片留空，仅作说明 -->
+                    <!-- Image placeholder: Add club poster URL here -->
+                    <img src="" alt="Club Poster" id="detail-club-poster" class="club-poster">
+                    <p><strong data-i18n="club_desc">介绍:</strong> <span id="detail-club-desc"></span></p>
+                    <p><strong data-i18n="club_contact">联系方式:</strong> <span id="detail-club-contact"></span></p>
+                    <p><strong data-i18n="club_activities">活动:</strong> <span id="detail-club-activities"></span></p>
+                    
+                    <div class="comment-section">
+                        <h3 data-i18n="comments">评论区</h3>
+                        <div id="club-comments-list"></div>
+                        <div class="comment-input-area">
+                            <input type="text" id="club-comment-input" placeholder="写下你的评论..." data-i18n-placeholder="comment_ph">
+                            <button onclick="addClubComment()" data-i18n="submit_comment">提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 论坛页 -->
+        <section id="forum" class="page-section">
+            <div id="forum-list-view">
+                <h2 class="page-title" data-i18n="forum_title">论坛</h2>
+                <div class="search-bar">
+                    <input type="text" id="forum-search" placeholder="搜索帖子..." data-i18n-placeholder="forum_search_ph">
+                </div>
+                <div id="forum-auth-warning" class="auth-warning" style="display: none;">
+                    <p data-i18n="forum_login_required">请先登录才能使用论坛功能。</p>
+                    <button onclick="document.querySelector('[data-target=\'profile\']').click()" data-i18n="go_login">前往登录</button>
+                </div>
+                <div id="forum-content-area" style="display: none;">
+                    <div class="new-post-area">
+                        <input type="text" id="post-title" placeholder="帖子标题..." data-i18n-placeholder="post_title_ph">
+                        <textarea id="post-content" placeholder="帖子内容..." data-i18n-placeholder="post_content_ph"></textarea>
+                        <button onclick="createPost()" data-i18n="post_btn">发布帖子</button>
+                    </div>
+                    <div id="forum-posts-list">
+                        <!-- 由 JS 动态渲染 -->
+                    </div>
+                </div>
+            </div>
+            <!-- 帖子详情与评论在模态框或视图中 -->
+            <div id="forum-detail-view" style="display: none;">
+                <button class="back-btn" onclick="showForumList()">← <span data-i18n="back">返回</span></button>
+                <div id="forum-detail-content"></div>
+            </div>
+        </section>
+
+        <!-- 个人页 (账号系统) -->
+        <section id="profile" class="page-section">
+            <h2 class="page-title" data-i18n="profile_title">个人中心</h2>
+            <div id="auth-forms">
+                <div class="auth-form-container">
+                    <h3 data-i18n="login">登录</h3>
+                    <input type="text" id="login-account" placeholder="邮箱/手机号/用户名" data-i18n-placeholder="login_acc_ph">
+                    <input type="password" id="login-password" placeholder="密码" data-i18n-placeholder="password_ph">
+                    <button onclick="loginUser()" data-i18n="login_btn">登录</button>
+                </div>
+                <div class="auth-form-container">
+                    <h3 data-i18n="register">注册</h3>
+                    <input type="text" id="reg-account" placeholder="邮箱/手机号" data-i18n-placeholder="reg_acc_ph">
+                    <input type="text" id="reg-username" placeholder="用户名 (不能重复)" data-i18n-placeholder="reg_username_ph">
+                    <input type="password" id="reg-password" placeholder="密码" data-i18n-placeholder="password_ph">
+                    <button onclick="registerUser()" data-i18n="reg_btn">注册</button>
+                </div>
+                <div class="privacy-notice">
+                    <p><a href="#" onclick="showPrivacy()" data-i18n="privacy_link">阅读隐私信息说明</a></p>
+                </div>
+            </div>
+            <div id="user-dashboard" style="display: none;">
+                <h3><span data-i18n="welcome_user">欢迎, </span><span id="dash-username"></span></h3>
+                <div class="profile-edit">
+                    <label data-i18n="bio_label">个人简介:</label>
+                    <textarea id="user-bio" placeholder="写一点关于你的介绍..." data-i18n-placeholder="bio_ph"></textarea>
+                    <button onclick="updateBio()" data-i18n="save_bio">保存简介</button>
+                </div>
+                <button onclick="logoutUser()" class="logout-btn" data-i18n="logout_btn">退出登录</button>
+            </div>
+        </section>
+
+        <!-- GAP页 -->
+        <section id="gap" class="page-section">
+            <div class="placeholder-box">
+                <h2 data-i18n="gap_placeholder">🚧 正在制作...</h2>
+                <p data-i18n="gap_desc">GAP页面尚未完成，敬请期待！</p>
+            </div>
+        </section>
+
+        <!-- 其他页 -->
+        <section id="other" class="page-section">
+            <div class="placeholder-box">
+                <h2 data-i18n="other_placeholder">🚧 正在制作...</h2>
+                <p data-i18n="other_desc">其他功能正在开发中，敬请期待！</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 底部栏目 (Footer) -->
+    <footer class="site-footer">
+        <p data-i18n="footer_copy">&copy; 2025 SFLS 国际部. 每日头疼报社 出品.</p>
+        <p data-i18n="footer_suggest">如果你对本报有任何建议，可以在微信群告诉我们。</p>
+    </footer>
+
+    <!-- 用户信息弹窗 (论坛点击头像) -->
+    <div id="user-info-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeUserModal()">&times;</span>
+            <h3 data-i18n="user_info">用户信息</h3>
+            <p><strong data-i18n="username">用户名:</strong> <span id="modal-username"></span></p>
+            <p><strong data-i18n="account">账号:</strong> <span id="modal-account"></span></p>
+            <p><strong data-i18n="bio">简介:</strong> <span id="modal-bio"></span></p>
+        </div>
+    </div>
+
+    <!-- 隐私说明弹窗 -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePrivacy()">&times;</span>
+            <h3 data-i18n="privacy_title">隐私信息说明</h3>
+            <div class="privacy-text" data-i18n="privacy_text">
+                <!-- 默认填充的英文说明，会被 i18n 替换 -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
