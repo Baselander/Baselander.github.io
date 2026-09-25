@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SFLS Hub — Club Detail</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/clubs.css">
+  <style>
+    .club-detail-header {
+      background: var(--sfls-surface);
+      border: 1px solid var(--sfls-border);
+      border-radius: var(--sfls-radius);
+      padding: 32px;
+      margin-bottom: 28px;
+      box-shadow: var(--sfls-shadow);
+    }
+    .club-detail-poster {
+      width: 100%;
+      height: 240px;
+      background: linear-gradient(135deg, var(--sfls-primary), var(--sfls-primary-light));
+      border-radius: var(--sfls-radius-sm);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.3);
+      font-size: 64px;
+    }
+    .club-detail-name {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--sfls-primary-dark);
+      margin-bottom: 12px;
+    }
+    .club-detail-info {
+      font-size: 14px;
+      color: var(--sfls-text-secondary);
+      line-height: 1.8;
+    }
+    .club-detail-info strong { color: var(--sfls-text); }
+
+    /* 评论区 */
+    .comment-section {
+      background: var(--sfls-surface);
+      border: 1px solid var(--sfls-border);
+      border-radius: var(--sfls-radius);
+      padding: 24px;
+      box-shadow: var(--sfls-shadow);
+    }
+    .comment-section h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: var(--sfls-primary-dark);
+    }
+    .comment-input-area {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      align-items: flex-start;
+    }
+    .comment-input-area textarea {
+      flex: 1;
+      min-height: 60px;
+      resize: vertical;
+      border-radius: var(--sfls-radius-sm);
+    }
+    .comment-input-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .comment-list { display: flex; flex-direction: column; gap: 16px; }
+    .comment-item {
+      padding: 14px 16px;
+      background: var(--sfls-surface-hover);
+      border-radius: var(--sfls-radius-sm);
+      border-left: 3px solid var(--sfls-primary-light);
+    }
+    .comment-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+    .comment-avatar {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--sfls-primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .comment-username { font-weight: 600; color: var(--sfls-primary); }
+    .comment-time { color: var(--sfls-text-secondary); font-size: 12px; }
+    .comment-body { font-size: 14px; line-height: 1.6; }
+    .comment-image { max-width: 240px; border-radius: 6px; margin-top: 8px; }
+    .comment-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 6px;
+      font-size: 12px;
+    }
+    .comment-actions button {
+      color: var(--sfls-text-secondary);
+      font-size: 12px;
+    }
+    .comment-actions button:hover { color: var(--sfls-primary); }
+    .replies { margin-left: 28px; margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+  </style>
+</head>
+<body data-page="clubs">
+  <!-- 导航栏（与首页相同，请复制并修改 active 为 clubs） -->
+
+  <main class="main-content">
+    <div class="page-container">
+      <div id="club-detail"></div>
+
+      <!-- 评论区 -->
+      <div class="comment-section">
+        <h2 data-i18n="clubs.comments">Comments</h2>
+        <div class="comment-input-area" id="comment-input-area">
+          <textarea id="comment-text" data-i18n-placeholder="clubs.commentPlaceholder"
+                    placeholder="Write a comment..."></textarea>
+          <div class="comment-input-actions">
+            <button class="btn btn-primary btn-sm" onclick="submitComment()" data-i18n="clubs.send">Send</button>
+            <label class="btn btn-outline btn-sm" style="cursor:pointer;">
+              📎 <input type="file" id="comment-file" accept="image/*" style="display:none" onchange="previewCommentImage(this)">
+            </label>
+          </div>
+        </div>
+        <div id="comment-preview"></div>
+        <div class="comment-list" id="comment-list"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 底部栏（与首页相同） -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/comments.js"></script>
+  <script src="js/club-detail.js"></script>
+</body>
+</html>

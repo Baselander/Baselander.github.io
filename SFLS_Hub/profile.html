@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SFLS Hub — Profile</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body data-page="profile">
+  <!-- 导航栏（与首页相同，请复制并修改 active 为 profile） -->
+
+  <main class="main-content">
+    <div class="page-container">
+      <div class="profile-layout">
+        <!-- 左侧边栏 -->
+        <aside class="profile-sidebar">
+          <div class="sidebar-item active" onclick="showProfileTab('profile')">
+            <span>👤</span> <span data-i18n="profile.title">Profile</span>
+          </div>
+          <div class="sidebar-item" onclick="showProfileTab('clubs')">
+            <span>🏛️</span> <span data-i18n="profile.myClubs">My Clubs</span>
+          </div>
+          <div class="sidebar-item" onclick="showProfileTab('news')">
+            <span>📰</span> <span data-i18n="profile.news">My News</span>
+          </div>
+          <div class="sidebar-item" onclick="showProfileTab('saved')">
+            <span>🔖</span> <span>Saved</span>
+          </div>
+          <div class="sidebar-item" onclick="showProfileTab('following')">
+            <span>👥</span> <span>Following</span>
+          </div>
+          <div class="sidebar-item logout-item" onclick="logout()">
+            <span>🚪</span> <span data-i18n="auth.logout">Logout</span>
+          </div>
+        </aside>
+
+        <!-- 右侧主内容 -->
+        <div class="profile-main">
+          <div class="profile-header">
+            <div class="profile-avatar" id="profile-avatar">B</div>
+            <div class="profile-info">
+              <h1 id="profile-username">Baselander</h1>
+              <p id="profile-subtitle" style="color:var(--sfls-text-secondary);font-size:14px;">mstery</p>
+              <div class="profile-meta">
+                <span class="profile-badge" data-i18n="profile.member">MEMBER</span>
+                <span id="profile-joined" data-i18n="profile.joined">Joined</span>
+              </div>
+            </div>
+            <div class="profile-stats">
+              <div class="stat"><span class="stat-num" id="stat-clubs">0</span><span class="stat-label" data-i18n="profile.clubs">Clubs</span></div>
+              <div class="stat"><span class="stat-num" id="stat-news">0</span><span class="stat-label" data-i18n="profile.news">News</span></div>
+              <div class="stat"><span class="stat-num" id="stat-posts">0</span><span class="stat-label" data-i18n="profile.posts">Posts</span></div>
+            </div>
+          </div>
+
+          <!-- Bio -->
+          <div class="profile-section">
+            <h2 data-i18n="profile.bio">BIO</h2>
+            <textarea id="bio-input" data-i18n-placeholder="profile.bioPlaceholder"
+                      placeholder="Tell us about yourself..." style="min-height:100px;"></textarea>
+            <button class="btn btn-primary btn-sm" onclick="saveBio()" style="margin-top:10px;" data-i18n="profile.saveBio">Save Bio</button>
+          </div>
+
+          <!-- My Clubs -->
+          <div class="profile-section">
+            <h2 data-i18n="profile.myClubs">MY CLUBS</h2>
+            <p style="color:var(--sfls-text-secondary);" data-i18n="profile.noClubs">No clubs yet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 底部栏（与首页相同） -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

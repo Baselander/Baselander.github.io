@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SFLS Hub — Homework</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/homework.css">
+</head>
+<body data-page="homework">
+  <!-- 导航栏（同首页，active 改为 homework） -->
+
+  <main class="main-content">
+    <div class="page-container">
+      <h1 class="page-title" data-i18n="homework.title">Homework</h1>
+
+      <!-- 班级子选项栏 -->
+      <div class="class-tabs" id="class-tabs">
+        <button class="class-tab active" data-class="111A">111A</button>
+        <button class="class-tab" data-class="111B">111B</button>
+        <button class="class-tab" data-class="112">112</button>
+        <button class="class-tab" data-class="113">113</button>
+        <button class="class-tab" data-class="114">114</button>
+      </div>
+
+      <!-- 作业内容区（报纸风格） -->
+      <div id="homework-content" class="homework-container">
+        <p class="loading-text" data-i18n="common.loading">Loading...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- 底部栏 -->
+
+  <script src="js/homework.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "debate",
+    "name": "辩论社 Debate Club",
+    "description": "每周进行模拟辩论训练，培养逻辑思维与表达能力。",
+    "contact": "debate@example.com",
+    "activities": "每周三下午 4:00-5:30 在 B203 教室",
+    "poster": ""
+  },
+  {
+    "id": "cs",
+    "name": "计算机科学社 CS Club",
+    "description": "学习编程、参加算法竞赛、开发学生项目。",
+    "contact": "cs@example.com",
+    "activities": "每周五下午 3:30-5:00 在机房",
+    "poster": ""
+  },
+  {
+    "id": "art",
+    "name": "美术社 Art Club",
+    "description": "绘画、设计、手工制作，定期举办作品展。",
+    "contact": "art@example.com",
+    "activities": "每周二下午 4:00-5:30 在美术教室",
+    "poster": ""
+  }
+]

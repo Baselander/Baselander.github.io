@@ -1,0 +1,119 @@
+/* ============================================
+   作业页样式 — 报纸风格
+   ============================================ */
+
+.class-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.class-tab {
+  padding: 8px 24px;
+  border-radius: 24px;
+  border: 2px solid var(--sfls-border);
+  background: var(--sfls-surface);
+  color: var(--sfls-text-secondary);
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+.class-tab:hover {
+  border-color: var(--sfls-primary-light);
+  color: var(--sfls-primary);
+}
+.class-tab.active {
+  background: var(--sfls-primary);
+  border-color: var(--sfls-primary);
+  color: #fff;
+}
+
+/* 报纸风格容器 */
+.homework-container {
+  background: var(--sfls-surface);
+  border: 1px solid var(--sfls-border);
+  border-radius: var(--sfls-radius);
+  padding: 32px;
+  box-shadow: var(--sfls-shadow);
+}
+
+/* 报纸头部 */
+.news-header {
+  text-align: center;
+  border-bottom: 4px double var(--sfls-text);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.news-header-date {
+  font-size: 13px;
+  color: var(--sfls-text-secondary);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.news-header-title {
+  font-family: Georgia, serif;
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: var(--sfls-primary-dark);
+  line-height: 1.2;
+}
+
+.news-header-subtitle {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  color: var(--sfls-primary);
+  margin-top: 4px;
+}
+
+/* 科目区块 */
+.subject-block {
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--sfls-border);
+}
+.subject-block:last-child { border-bottom: none; margin-bottom: 0; }
+
+.subject-name {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--sfls-primary);
+  margin-bottom: 8px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.subject-tasks {
+  list-style: none;
+  padding-left: 4px;
+}
+
+.subject-tasks li {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--sfls-text);
+  padding-left: 18px;
+  position: relative;
+}
+
+.subject-tasks li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--sfls-text-secondary);
+}
+
+/* 报纸底部注释 */
+.news-footer {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--sfls-border);
+  font-size: 12px;
+  color: var(--sfls-text-secondary);
+  text-align: center;
+  line-height: 1.8;
+}

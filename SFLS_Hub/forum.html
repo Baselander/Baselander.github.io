@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SFLS Hub — Forum</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/forum.css">
+</head>
+<body data-page="forum">
+  <!-- 导航栏 -->
+  <main class="main-content">
+    <div class="page-container">
+      <h1 class="page-title" data-i18n="forum.title">Forum</h1>
+
+      <div class="search-bar">
+        <input type="text" id="forum-search" data-i18n-placeholder="forum.searchPlaceholder" placeholder="Search posts...">
+      </div>
+
+      <button class="btn btn-primary" onclick="openNewPost()" style="margin-bottom:20px;" data-i18n="forum.newPost">+ New Post</button>
+
+      <!-- 新帖编辑区（默认隐藏） -->
+      <div id="new-post-area" style="display:none; margin-bottom:24px;" class="card">
+        <input type="text" id="post-title" data-i18n-placeholder="forum.titlePlaceholder"
+               placeholder="Post title..." style="margin-bottom:12px;">
+        <textarea id="post-content" data-i18n-placeholder="forum.contentPlaceholder"
+                  placeholder="What do you want to share?" style="min-height:100px; margin-bottom:12px;"></textarea>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <button class="btn btn-primary btn-sm" onclick="publishPost()" data-i18n="forum.publish">Publish</button>
+          <label class="btn btn-outline btn-sm" style="cursor:pointer;">
+            📎 <input type="file" id="post-file" accept="image/*" style="display:none">
+          </label>
+          <button class="btn btn-outline btn-sm" onclick="document.getElementById('new-post-area').style.display='none'">Cancel</button>
+        </div>
+      </div>
+
+      <!-- 帖子列表 -->
+      <div id="post-list" class="post-list"></div>
+    </div>
+  </main>
+  <!-- 底部栏 -->
+
+  <script src="js/forum.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SFLS Hub — Login / Register</title>
+  <link rel="stylesheet" href="css/base.css">
+  <style>
+    .auth-container {
+      max-width: 440px;
+      margin: 60px auto;
+      padding: 0 24px;
+    }
+    .auth-card {
+      background: var(--sfls-surface);
+      border: 1px solid var(--sfls-border);
+      border-radius: var(--sfls-radius);
+      padding: 36px 32px;
+      box-shadow: var(--sfls-shadow-lg);
+    }
+    .auth-card h1 {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 28px;
+      color: var(--sfls-primary-dark);
+    }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--sfls-text-secondary);
+    }
+    .auth-switch {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 13px;
+    }
+    .auth-switch a { color: var(--sfls-primary-light); cursor: pointer; }
+    .error-msg {
+      color: #e53935;
+      font-size: 13px;
+      margin-top: 8px;
+      display: none;
+    }
+  </style>
+</head>
+<body data-page="auth">
+  <main class="main-content">
+    <div class="auth-container">
+      <div class="auth-card">
+        <h1 id="auth-title" data-i18n="auth.login">Login</h1>
+
+        <div class="form-group" id="username-group" style="display:none;">
+          <label data-i18n="auth.username">Username</label>
+          <input type="text" id="auth-username">
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="auth.email">Email</label>
+          <input type="email" id="auth-email">
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="auth.password">Password</label>
+          <input type="password" id="auth-password">
+        </div>
+
+        <button class="btn btn-primary" style="width:100%;" onclick="handleAuth()" id="auth-btn" data-i18n="auth.loginBtn">Sign In</button>
+        <div class="error-msg" id="auth-error"></div>
+
+        <div class="auth-switch">
+          <a onclick="toggleAuthMode()" id="auth-switch-link" data-i18n="auth.switchToRegister">
+            Don't have an account? Register
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

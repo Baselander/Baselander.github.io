@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SFLS Hub — Notifications</title>
+  <link rel="stylesheet" href="css/base.css">
+  <style>
+    .notif-list { display: flex; flex-direction: column; gap: 16px; }
+    .notif-item {
+      background: var(--sfls-surface);
+      border: 1px solid var(--sfls-border);
+      border-radius: var(--sfls-radius);
+      padding: 20px 24px;
+      box-shadow: var(--sfls-shadow);
+      border-left: 4px solid var(--sfls-primary);
+      transition: box-shadow 0.2s;
+    }
+    .notif-item:hover { box-shadow: var(--sfls-shadow-lg); }
+    .notif-date {
+      font-size: 12px;
+      color: var(--sfls-text-secondary);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .notif-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--sfls-text);
+      margin-bottom: 6px;
+    }
+    .notif-body {
+      font-size: 14px;
+      color: var(--sfls-text-secondary);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body data-page="notifications">
+  <!-- 导航栏（与首页相同，此处省略重复代码，请复制首页导航栏并修改 active 为 notifications） -->
+  <!-- 为节省篇幅，假设你已粘贴导航栏。若需要完整导航栏，请参考 index.html 并调整 active 类。 -->
+
+  <main class="main-content">
+    <div class="page-container">
+      <h1 class="page-title" data-i18n="notifications.title">Notifications</h1>
+      <div class="notif-list" id="notif-list">
+        <p class="loading-text" data-i18n="common.loading">Loading...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- 底部栏（与首页相同，省略重复代码） -->
+
+  <script src="js/notifications.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+{
+  "111A": {
+    "date": "2025/11/24",
+    "subjects": [
+      {
+        "name": "Eng Lang",
+        "tasks": ["Review class", "Chapter 10"]
+      },
+      {
+        "name": "Chinese",
+        "tasks": ["抄写纸", "三国演义练习题"]
+      },
+      {
+        "name": "AP Physics",
+        "tasks": ["Review"]
+      },
+      {
+        "name": "Precalc",
+        "tasks": ["Worksheet"]
+      },
+      {
+        "name": "History",
+        "tasks": ["Pop WS due next Tuesday"]
+      }
+    ]
+  },
+  "111B": {
+    "date": "2025/11/24",
+    "subjects": [
+      {
+        "name": "Eng Lang",
+        "tasks": ["Review class", "Chapter 10"]
+      },
+      {
+        "name": "Chinese",
+        "tasks": ["抄写纸", "三国演义练习题"]
+      },
+      {
+        "name": "AP Physics",
+        "tasks": ["Review"]
+      },
+      {
+        "name": "Precalc",
+        "tasks": ["Worksheet"]
+      }
+    ]
+  },
+  "112": {
+    "date": "2025/11/24",
+    "subjects": [
+      {
+        "name": "Eng Lang",
+        "tasks": ["Review class", "Chapter 10"]
+      },
+      {
+        "name": "Chinese",
+        "tasks": ["抄写纸"]
+      },
+      {
+        "name": "Precalc",
+        "tasks": ["Worksheet"]
+      }
+    ]
+  },
+  "113": {
+    "date": "2025/11/24",
+    "subjects": [
+      {
+        "name": "Eng Lang",
+        "tasks": ["Chapter 10"]
+      },
+      {
+        "name": "Chinese",
+        "tasks": ["三国演义练习题"]
+      },
+      {
+        "name": "AP Physics",
+        "tasks": ["Review"]
+      },
+      {
+        "name": "History",
+        "tasks": ["Pop WS due next Tuesday"]
+      }
+    ]
+  },
+  "114": {
+    "date": "2025/11/24",
+    "subjects": [
+      {
+        "name": "Eng Lang",
+        "tasks": ["Review class"]
+      },
+      {
+        "name": "Precalc",
+        "tasks": ["Worksheet"]
+      }
+    ]
+  }
+}

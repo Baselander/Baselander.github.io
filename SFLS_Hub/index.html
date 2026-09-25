@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SFLS Hub — Home</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body data-page="home">
+
+  <!-- 导航栏 -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()">EN | 中文</button>
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </div>
+    <a href="index.html" class="navbar-logo">
+      <span class="navbar-logo-icon">S</span>
+      <span>SFLS Hub</span>
+    </a>
+    <button class="navbar-toggle" onclick="document.querySelector('.navbar-nav').classList.toggle('open')">☰</button>
+    <nav class="navbar-nav">
+      <a href="index.html" class="nav-link active" data-nav="home" data-i18n="nav.home">Home</a>
+      <a href="intro.html" class="nav-link" data-nav="intro" data-i18n="nav.intro">Intro</a>
+      <a href="homework.html" class="nav-link" data-nav="homework" data-i18n="nav.homework">Homework</a>
+      <a href="notifications.html" class="nav-link" data-nav="notifications" data-i18n="nav.notifications">Notifications</a>
+      <a href="clubs.html" class="nav-link" data-nav="clubs" data-i18n="nav.clubs">Clubs</a>
+      <a href="gap.html" class="nav-link" data-nav="gap" data-i18n="nav.gap">GAP</a>
+      <a href="forum.html" class="nav-link" data-nav="forum" data-i18n="nav.forum">Forum</a>
+      <a href="paradox.html" class="nav-link" data-nav="paradox" data-i18n="nav.paradox">Paradox</a>
+      <a href="other.html" class="nav-link" data-nav="other" data-i18n="nav.other">Other</a>
+      <a href="profile.html" class="nav-link" data-nav="profile" data-i18n="nav.profile">Profile</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <!-- Hero 主视觉区 -->
+    <section class="hero">
+      <div class="hero-content">
+        <p class="hero-tagline">SFLS · AIP · Campus</p>
+        <h1 class="hero-title">AIP Hub</h1>
+        <p class="hero-subtitle" data-i18n="home.subtitle">Website For Students of AIP</p>
+        <a href="intro.html" class="hero-btn" data-i18n="home.enterBtn">Enter Intro →</a>
+      </div>
+    </section>
+
+    <!-- 浮窗区块 -->
+    <section class="float-section">
+      <div class="float-grid">
+        <a href="homework.html" class="float-card">
+          <div class="float-card-square" data-i18n="nav.homework">Homework</div>
+          <div class="float-card-body">
+            <h3 data-i18n="home.floatHomework.title">Homework</h3>
+            <p data-i18n="home.floatHomework.desc">Daily assignments for classes 111A-114.</p>
+          </div>
+        </a>
+        <a href="notifications.html" class="float-card">
+          <div class="float-card-square" data-i18n="nav.notifications">Notifications</div>
+          <div class="float-card-body">
+            <h3 data-i18n="home.floatNotifications.title">Notifications</h3>
+            <p data-i18n="home.floatNotifications.desc">Important announcements and notices.</p>
+          </div>
+        </a>
+        <a href="clubs.html" class="float-card">
+          <div class="float-card-square" data-i18n="nav.clubs">Clubs</div>
+          <div class="float-card-body">
+            <h3 data-i18n="home.floatClubs.title">Clubs</h3>
+            <p data-i18n="home.floatClubs.desc">Explore student clubs and activities.</p>
+          </div>
+        </a>
+        <a href="gap.html" class="float-card">
+          <div class="float-card-square" data-i18n="nav.gap">GAP</div>
+          <div class="float-card-body">
+            <h3 data-i18n="home.floatGap.title">GAP</h3>
+            <p data-i18n="home.floatGap.desc">Global Awareness Program opportunities.</p>
+          </div>
+        </a>
+        <a href="forum.html" class="float-card">
+          <div class="float-card-square" data-i18n="nav.forum">Forum</div>
+          <div class="float-card-body">
+            <h3 data-i18n="home.floatForum.title">Forum</h3>
+            <p data-i18n="home.floatForum.desc">Discuss topics and collaborate.</p>
+          </div>
+        </a>
+        <a href="other.html" class="float-card">
+          <div class="float-card-square" data-i18n="nav.other">Other</div>
+          <div class="float-card-body">
+            <h3 data-i18n="home.floatOther.title">Other</h3>
+            <p data-i18n="home.floatOther.desc">Additional resources and tools.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- 底部栏 -->
+  <footer class="footer">
+    <p data-i18n="footer.copyright">© 2025 SFLS International Department. Produced by The Daily Headache.</p>
+    <p data-i18n="footer.suggestion">If you have any suggestions, feel free to contact us in the WeChat group.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
