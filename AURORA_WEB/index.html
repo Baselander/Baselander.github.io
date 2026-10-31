@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>隙 · 桌面上的 AI 学习搭子</title>
+<meta name="description" content="一个住进 Windows 桌面的 AI 学习搭子：听你说作业、管待办、盯 DDL、陪专注、改错题、念资料，也能真的动手。数据全在本机，模型走你自己的 API key。">
+<meta name="theme-color" content="#080a17">
+<meta property="og:title" content="隙 · 桌面上的 AI 学习搭子">
+<meta property="og:description" content="Live2D 形象窗 + 8 页浮窗 + 本机宿主。数据不上云，钥匙在你手里。">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230047ff'/%3E%3Cstop offset='1' stop-color='%235b9bd5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M9 22c3-1 5-4 5-8M17 22c3-1 5-4 5-8' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' fill='none' opacity='.9'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- 背景层：光晕 / 网格 / 鼠标跟光 / 鲸鱼粒子 / 滚动条 -->
+<div class="bg" aria-hidden="true"></div>
+<div class="cursor-glow" aria-hidden="true"></div>
+<canvas class="particles" id="particles" aria-hidden="true"></canvas>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- ── 导航 ─────────────────────────────────────────────────────────────── -->
+<nav class="nav" id="nav">
+  <a class="brand" href="#top">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span>隙</span>
+    <span class="brand-sub">XÌ · DESKTOP COMPANION</span>
+  </a>
+  <div class="nav-links">
+    <a href="#what">她能做什么</a>
+    <a href="#forms">三种形态</a>
+    <a href="#privacy">数据在哪</a>
+    <a href="#faq">常见问题</a>
+  </div>
+  <div class="nav-actions">
+    <a class="btn ghost small" href="#faq">怎么装</a>
+    <a class="btn small" href="#download">下载</a>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ── 首屏 ───────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="kicker hero-kicker">Windows · 桌面常驻 · Live2D</div>
+        <h1 class="hero-title">
+          <span class="grad">她住在你的桌面上。</span><br>
+          <span class="dim">作业、DDL、专注，都是她的事。</span>
+        </h1>
+        <p class="hero-lead">
+          隙是一个 <b>Windows 桌面 AI 学习搭子</b>：蓝色鲸鱼娘的样子，听得懂你说的作业，
+          管得起来你的待办和截止时间，陪你专注，帮你改错题，念得动你的资料 ——
+          而且<b>能真的动手</b>（建任务、读文件、读钉钉、控制媒体）。
+        </p>
+        <div class="hero-cta">
+          <a class="btn" href="#download">下载 Windows 版</a>
+          <a class="btn ghost" href="#what">看看她能做什么</a>
+        </div>
+        <div class="hero-meta">
+          <span><i class="dot"></i>数据全在本机，不上云</span>
+          <span><i class="dot"></i>模型走你自己的 API key</span>
+          <span><i class="dot"></i>Electron + Live2D</span>
+        </div>
+      </div>
+
+      <!--
+        2026-10-31：这里原来放的是她的立绘 + 可真加载的 Live2D 模型。
+        那个形象是**第三方版权**（CC BY-NC-SA 4.0，三重版权链：上善无形 → ZipZipPipe → 氵六青），
+        主人说"不是自己画的就别当主要图片"，所以首屏换成一张**中性的示意图**（下面这段 SVG 是这次新画的，
+        不含任何第三方素材）。桌面上的形象照样是那个模型，署名写在页脚「素材与授权」里。
+      -->
+      <div class="stage" id="stage">
+        <div class="stage-ring" aria-hidden="true"></div>
+        <div class="stage-ring-2" aria-hidden="true"></div>
+        <div class="stage-floor" aria-hidden="true"></div>
+        <svg class="stage-art" viewBox="0 0 420 520" role="img" aria-label="示意图：一张书桌上的待机窗口，海面与鲸尾的剪影">
+          <defs>
+            <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#0d2a54" stop-opacity=".0" />
+              <stop offset=".55" stop-color="#0b4fa8" stop-opacity=".28" />
+              <stop offset="1" stop-color="#04182f" stop-opacity=".55" />
+            </linearGradient>
+            <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff" stop-opacity=".16" />
+              <stop offset="1" stop-color="#ffffff" stop-opacity=".05" />
+            </linearGradient>
+          </defs>
+          <rect x="0" y="120" width="420" height="400" fill="url(#sea)" rx="18" />
+          <!-- 鲸尾 -->
+          <g opacity=".85" fill="none" stroke="#8fd0ff" stroke-width="5" stroke-linecap="round">
+            <path d="M210 330c-26-30-26-66 0-96 26 30 26 66 0 96z" />
+            <path d="M210 234c-22-22-52-30-74-22 10 26 40 44 74 22z" />
+            <path d="M210 234c22-22 52-30 74-22-10 26-40 44-74 22z" />
+          </g>
+          <!-- 气泡 -->
+          <g fill="#9fe3ff" opacity=".5">
+            <circle cx="150" cy="180" r="5" />
+            <circle cx="272" cy="158" r="3.5" />
+            <circle cx="300" cy="228" r="4" />
+            <circle cx="128" cy="262" r="3" />
+          </g>
+          <!-- 浮窗卡片示意 -->
+          <g>
+            <rect x="96" y="352" width="228" height="120" rx="16" fill="url(#card)" stroke="#ffffff" stroke-opacity=".18" />
+            <rect x="114" y="374" width="70" height="9" rx="4.5" fill="#ffffff" fill-opacity=".55" />
+            <rect x="114" y="396" width="150" height="7" rx="3.5" fill="#ffffff" fill-opacity=".28" />
+            <rect x="114" y="412" width="120" height="7" rx="3.5" fill="#ffffff" fill-opacity=".22" />
+            <rect x="114" y="434" width="56" height="20" rx="10" fill="#4ea8ff" fill-opacity=".55" />
+            <rect x="180" y="434" width="56" height="20" rx="10" fill="#ffffff" fill-opacity=".14" />
+          </g>
+        </svg>
+        <div class="stage-tag" aria-hidden="true">桌面常驻 · 待机中</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 数字 ───────────────────────────────────────────────────────────── -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="stats" data-reveal>
+        <div class="stat"><div class="stat-num" data-count="8">0</div><div class="stat-label">个浮窗页签</div></div>
+        <div class="stat"><div class="stat-num" data-count="313">0</div><div class="stat-label">条界面断言（自检）</div></div>
+        <div class="stat"><div class="stat-num" data-count="70">0</div><div class="stat-label">项开机预检</div></div>
+        <div class="stat"><div class="stat-num" data-count="0">0</div><div class="stat-label">份数据上传到云</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 她能做什么 ─────────────────────────────────────────────────────── -->
+  <section class="sec" id="what">
+    <div class="wrap">
+      <div class="kicker">Capabilities</div>
+      <h2 class="sec-title">不是聊天框，是坐在你旁边的那个</h2>
+      <p class="sec-lead">
+        聊天谁都会。她记得你的课表、你的收件箱、你的错题本；她知道今天几号、下一节课在哪、哪个作业明天要交。
+        她要动手的时候会先问一句，你点头她才做。
+      </p>
+
+      <div class="cards">
+        <article class="card" data-reveal>
+          <div class="card-ico">◔</div>
+          <h3>听懂你的作业</h3>
+          <p>你把钉钉/群里的消息丢给她，她拆成一条条待办：科目、截止时间、要不要交。拿不准的会回来问你，不瞎建。</p>
+          <div class="tags"><span class="tag">收件箱</span><span class="tag">钉钉原文</span><span class="tag">自动去重</span></div>
+        </article>
+
+        <article class="card" data-reveal>
+          <div class="card-ico">◈</div>
+          <h3>盯住每个 DDL</h3>
+          <p>按你的课表推截止时间，提前一小时提醒，到点再提醒一次。上课和安静时段一律不打扰你。</p>
+          <div class="tags"><span class="tag">课表推断</span><span class="tag">提前提醒</span><span class="tag">上课静音</span></div>
+        </article>
+
+        <article class="card" data-reveal>
+          <div class="card-ico">◔</div>
+          <h3>陪你专注</h3>
+          <p>番茄钟一开，她闭嘴、只演工作；连续专注 50 分钟提醒你喝水，切去娱乐窗口会轻轻念你一句。</p>
+          <div class="tags"><span class="tag">专注模式</span><span class="tag">喝水提醒</span><span class="tag">不打扰</span></div>
+        </article>
+
+        <article class="card" data-reveal>
+          <div class="card-ico">✦</div>
+          <h3>陪你把题啃透</h3>
+          <p>讲概念、换更简单的说法、往深里讲、出同类型新题、照错题出相似题。看不到的题她会说看不到，不编。</p>
+          <div class="tags"><span class="tag">#explain</span><span class="tag">#practice</span><span class="tag">错题 → 相似题</span></div>
+        </article>
+
+        <article class="card" data-reveal>
+          <div class="card-ico">◎</div>
+          <h3>念得动你的资料</h3>
+          <p>整个学期的资料建了检索索引（精确 + BM25 融合），问一句就能翻到那一页；要念她就念给你听。</p>
+          <div class="tags"><span class="tag">全文检索</span><span class="tag">本机索引</span><span class="tag">朗读</span></div>
+        </article>
+
+        <article class="card" data-reveal>
+          <div class="card-ico">⌘</div>
+          <h3>真的动手</h3>
+          <p>建任务、读文件、翻资料、开番茄钟、控播放 —— 每一个动作都在权限清单里，做完写进日志。危险的一律先问。</p>
+          <div class="tags"><span class="tag">权限清单</span><span class="tag">先问再做</span><span class="tag">操作留痕</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 三种形态 ───────────────────────────────────────────────────────── -->
+  <section class="sec" id="forms">
+    <div class="wrap">
+      <div class="kicker">Form</div>
+      <h2 class="sec-title">三块，各干各的活</h2>
+      <p class="sec-lead">
+        她不是一个大窗口：形象窗只管她，浮窗是工作台，宿主在本机喂数据和事件。三块各自能拖、能关、记得住位置。
+      </p>
+
+      <div class="forms">
+        <article class="form" data-reveal>
+          <div class="form-head"><h3>形象窗</h3><span class="size">300 × 466</span></div>
+          <div class="mock m-her"><span class="blob" aria-hidden="true"></span></div>
+          <p>无边框、逐像素透明的 Live2D 窗口，只有她。头顶弹气泡，脚边弹提醒条。点空气会穿过去，点她才有反应。</p>
+        </article>
+
+        <article class="form" data-reveal>
+          <div class="form-head"><h3>浮窗</h3><span class="size">可拖 · 可缩放</span></div>
+          <div class="mock m-panel">
+            <div class="tabs"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+            <div class="lines" style="padding:10px;display:grid;gap:8px">
+              <i style="display:block;height:8px;border-radius:4px;background:linear-gradient(90deg,rgba(91,155,213,.55),transparent)"></i>
+              <i style="display:block;height:8px;width:70%;border-radius:4px;background:rgba(91,155,213,.22)"></i>
+              <i style="display:block;height:8px;width:86%;border-radius:4px;background:rgba(91,155,213,.16)"></i>
+              <i style="display:block;height:8px;width:52%;border-radius:4px;background:rgba(91,155,213,.16)"></i>
+            </div>
+          </div>
+          <p>8 个页签：提醒 / 今日 / 任务 / 日历 / 对话 / 错题 / 总结 / 笔记本 —— 加设置。页签位置、顺序、透明度都能改。</p>
+        </article>
+
+        <article class="form" data-reveal>
+          <div class="form-head"><h3>宿主</h3><span class="size">127.0.0.1 : 8790</span></div>
+          <div class="mock m-host">
+            <div class="lines"><i></i><i></i><i></i><i></i></div>
+          </div>
+          <p>本机的一个小服务：喂页面、推送事件、把她的语音送过去。只监听本机，端口带一次性钥匙，网页跨源读不到。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 数据在哪 ───────────────────────────────────────────────────────── -->
+  <section class="sec" id="privacy">
+    <div class="wrap privacy">
+      <div>
+        <div class="kicker">Privacy</div>
+        <p class="big-quote" style="margin-top:16px">
+          她的记忆不在云上，<br>在 <em>你自己的文件夹</em> 里。
+        </p>
+        <p class="sec-lead" style="margin-bottom:0">
+          待办、错题、聊天记录、课表、你写的规矩 —— 全部是本机文件，你随时能打开、备份、删掉。
+          她要用模型的时候，走的是你自己填的那把 key。
+        </p>
+      </div>
+      <div class="pledge">
+        <div class="pledge-row" data-reveal>
+          <div class="k">01</div>
+          <div><h4>本机文件，随时能看</h4><p>纯 JSON / Markdown，没有加密黑盒。换机器拷过去就能接着用。</p></div>
+        </div>
+        <div class="pledge-row" data-reveal>
+          <div class="k">02</div>
+          <div><h4>钥匙在你手里</h4><p>模型走你填的 API key，多把钥匙按用途分（决定 / 干活 / 另一个她），随时能停。</p></div>
+        </div>
+        <div class="pledge-row" data-reveal>
+          <div class="k">03</div>
+          <div><h4>只开在 127.0.0.1</h4><p>宿主只监听本机、端口上锁；跨源网页读不到她的钥匙，也发不了指令。</p></div>
+        </div>
+        <div class="pledge-row" data-reveal>
+          <div class="k">04</div>
+          <div><h4>她认得边界</h4><p>外部原文只当资料不当规矩；看不懂的题说"看不到"；要动你的东西先问。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 技术栈 ─────────────────────────────────────────────────────────── -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="kicker">Stack</div>
+      <h2 class="sec-title">用什么搭的</h2>
+      <p class="sec-lead">没有前端框架，没有云端，没有黑盒服务。能读能改，坏了也知道坏在哪。</p>
+      <div class="stack" data-reveal>
+        <span>Electron</span><span>Live2D Cubism 4</span><span>PIXI.js</span>
+        <span>Node.js（无框架 ESM）</span><span>原生 CSS</span><span>本地检索（精确 + BM25）</span>
+        <span>Edge TTS / piper</span><span>PowerShell 工具链</span><span>Watchdog 自检</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ───────────────────────────────────────────────────────────── -->
+  <section class="sec" id="faq">
+    <div class="wrap">
+      <div class="kicker">FAQ</div>
+      <h2 class="sec-title">动手之前想知道的几件事</h2>
+      <div class="faq" style="margin-top:34px">
+        <details open>
+          <summary>她需要联网吗？</summary>
+          <p>只有调模型和用 Edge 语音时需要。数据、待办、错题本、检索索引全在本机；断网她还在，只是暂时不说话。</p>
+        </details>
+        <details>
+          <summary>要我自己填 API key 吗？</summary>
+          <p>是。她在设置页里填，钥匙存在本机文件里。你可以填一把，也可以按用途分几把（一把决定、一把干活、一把给另一个她）。</p>
+        </details>
+        <details>
+          <summary>会不会偷看我的东西？</summary>
+          <p>她只能读你放进「投放区」的文件和你的资料目录；每一步读写在日志里。危险动作（删东西、动系统设置）默认先问你。</p>
+        </details>
+        <details>
+          <summary>她说的东西可靠吗？</summary>
+          <p>她会给依据：查资料会带出处；看不懂的题她说看不到，不编；讲错了你纠正她，她会记进经验本。</p>
+        </details>
+        <details>
+          <summary>占资源吗？</summary>
+          <p>她按 20~30 帧渲染、低性能档更省；空闲时会自己睡觉。实测一台没有独显的轻薄本常驻也没压力。</p>
+        </details>
+        <details id="faq-credit">
+          <summary>桌面上的她是自己画的吗？</summary>
+          <p>
+            不是。桌面形象用的是**第三方授权的 Live2D 模型**（CC BY-NC-SA 4.0，**非商业**）：
+            角色原作 <a href="https://space.bilibili.com/4456176" rel="noopener">上善无形</a>（原创 OC「溟月」）→
+            二次设计 <a href="https://space.bilibili.com/4168597" rel="noopener">ZipZipPipe</a>（女仆鲸鱼娘）→
+            Live2D 化 <a href="https://space.bilibili.com/11272072" rel="noopener">氵六青</a>。
+            这套素材**不允许出售**，本项目也**不收费**。
+          </p>
+          <p>
+            这个页面当初把那个模型当主图用，但它不是我们画的 —— 所以首屏换成了自己画的示意图，
+            页面里也不再打包任何模型文件。模型文件只随发行包走（那是窗口要用的），署名写在包里和页脚。
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 结尾 ───────────────────────────────────────────────────────────── -->
+  <section class="final" id="download">
+    <div class="wrap">
+      <h2>让她坐到你的桌面上</h2>
+      <p>Windows 桌面版。解压即用，数据放你自己的文件夹里，卸载就干净卸掉。</p>
+      <div class="hero-cta" style="justify-content:center">
+        <a class="btn" href="https://github.com/Baselander/AURORA-3.3/releases/latest" rel="noopener" id="dlBtn">下载（Windows）</a>
+        <a class="btn ghost" href="https://github.com/Baselander/AURORA-3.3" rel="noopener" id="srcBtn">去 GitHub 看源码</a>
+        <a class="btn ghost" href="mailto:baselander@outlook.com?subject=AURORA%20%E5%8F%8D%E9%A6%88" id="mailBtn">写反馈（baselander@outlook.com）</a>
+      </div>
+      <p style="margin-top:22px;font-size:12.5px;color:var(--fg-faint)">
+        发行包在 <a href="https://github.com/Baselander/AURORA-3.3/releases" rel="noopener">GitHub Releases</a>；
+        有问题直接写信给 <a href="mailto:baselander@outlook.com">baselander@outlook.com</a>，或在仓库里开 Issue。
+      </p>
+      <p style="margin-top:10px;font-size:12.5px;color:var(--fg-faint)">
+        这一页是**零依赖静态页**：双击 <code>index.html</code> 就能看，不联网、不加载任何外部资源。
+        （首屏那张是示意图 —— 桌面上的她用的是第三方授权的 Live2D 模型，本页不展示，署名见页脚。）
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot" style="flex-direction:column;align-items:flex-start;gap:12px">
+    <div style="display:flex;gap:18px;flex-wrap:wrap;width:100%;justify-content:space-between">
+      <div>鲸鱼娘 · 桌面 AI 学习搭子 · <span id="footYear">2026</span></div>
+      <div style="display:flex;gap:18px;flex-wrap:wrap">
+        <a href="#top">回到顶部</a>
+        <a href="#privacy">数据在哪</a>
+        <a href="https://github.com/Baselander/AURORA-3.3" rel="noopener">GitHub 仓库</a>
+        <a href="mailto:baselander@outlook.com">反馈邮箱</a>
+      </div>
+    </div>
+    <!-- 素材与授权：形象是第三方版权，必须署名（客户 2026-10-31 要求写清） -->
+    <div id="credit" style="font-size:12px;line-height:1.7;color:var(--fg-faint);max-width:760px">
+      <strong style="color:var(--fg-dim)">素材与授权</strong> —— 桌面形象用的是第三方 Live2D 模型
+      （<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener">CC BY-NC-SA 4.0</a>，非商业）：
+      角色原作 <a href="https://space.bilibili.com/4456176" rel="noopener">上善无形</a>（原创 OC「溟月」）·
+      二次设计 <a href="https://space.bilibili.com/4168597" rel="noopener">ZipZipPipe</a>（女仆鲸鱼娘）·
+      Live2D 化 <a href="https://space.bilibili.com/11272072" rel="noopener">氵六青</a>。
+      该素材无偿分享、**禁止出售**；本项目免费、非商业，模型文件只随发行包分发，<strong>本页不含任何该素材</strong>。
+      运行时：Electron（MIT）、Live2D Cubism Core（Live2D Inc. 条款）、PIXI.js（MIT）。
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
